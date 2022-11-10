@@ -1,0 +1,53 @@
+.epicenter_service_option_container {
+    display: flex;
+    margin-bottom: 50px;
+    width: 100%;
+    justify-content: center;
+}
+
+.epicenter_service_option_image_container {
+    height: 64px ;
+    width: 64px ;
+    border-radius: 50%;
+    background-color: #010D1E;
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.epicenter_service_option_image {
+    height: 40px !important;
+    width: 42px !important;
+    object-fit: contain;
+}
+
+.epicenter_service_text_container {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin-left: 25px;
+}
+
+.epicenter_service_option_title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 27px;
+    color: #010D1E;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    margin-bottom: 6px;
+}
+
+.epicenter_service_option_description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
+    color: #010D1E;
+}
+
+.epicenter_service_option_container:last-child {
+    margin-bottom: 0;
+}

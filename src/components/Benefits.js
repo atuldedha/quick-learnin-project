@@ -1,0 +1,20 @@
+import React from "react";
+import BenefitOption from "./BenefitOption";
+import "./Benefits.css";
+import Option1 from "../images/benefit1.png";
+import Option2 from "../images/benefit2.png";
+
+const Benefits = () => {
+  return (
+    <div className="benefits_container">
+      <BenefitOption
+        image={Option1}
+        text="Service providers you can trust not to cancel at the last minute"
+      />
+      <BenefitOption text="Get matched with Self-Care service specialists" />
+      <BenefitOption image={Option2} text="Same-day appointment" />
+    </div>
+  );
+};
+
+export default Benefits;

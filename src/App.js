@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Banner from "./components/Banner";
+import Banner2 from "./components/Banner2";
+import Benefits from "./components/Benefits";
+import Contact from "./components/Contact";
+import EpicenterServices from "./components/EpicenterServices";
+import EpicenterWroks from "./components/EpicenterWroks";
+import Header from "./components/Header";
+import Procedure from "./components/Procedure";
+import Sidebar from "./components/Sidebar";
 
 function App() {
+  const [openSidebar, setOpenSidebar] = useState(false);
+  const toggleSidebar = () => {
+    setOpenSidebar(!openSidebar);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      {openSidebar ? (
+        <Sidebar toggleSidebar={toggleSidebar} />
+      ) : (
+        <>
+          <Header
+            openSidebar={openSidebar}
+            setOpenSidebar={setOpenSidebar}
+            toggleSidebar={toggleSidebar}
+          />
+          <div className="App">
+            <Banner />
+            <EpicenterWroks />
+            <Banner2 />
+            <Benefits />
+            <EpicenterServices />
+            <Procedure />
+            <Contact />
+          </div>
+        </>
+      )}
     </div>
   );
 }
