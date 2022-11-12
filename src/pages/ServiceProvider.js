@@ -10,7 +10,7 @@ const ServiceProvider = () => {
       <Header />
       <Banner
         headingText="Find clients & hourly treatment room rental."
-        buttonText="Book a treatment now"
+        buttonText="Book a treatment room"
       />
       <EpicenterWorksForProvider />
       <Footer />

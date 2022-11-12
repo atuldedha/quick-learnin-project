@@ -17,7 +17,7 @@ const EpicenterWorksForProvider = () => {
           <CircularImageForProvider
             image={EpicenterProviderWorks1}
             index={1}
-            text="BSignup on Epicenterwellness.co"
+            text="Signup on Epicenterwellness.co"
             isFourthChild
           />
           <CircularImageForProvider
