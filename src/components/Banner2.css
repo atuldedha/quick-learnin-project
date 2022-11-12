@@ -51,6 +51,7 @@
     .banner2_text {
         font-size: 55px;
         font-weight: 700;
+        line-height: 82px;
         width: 70%;
     }
 }

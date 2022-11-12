@@ -1,4 +1,4 @@
-.circular_image_container {
+.circular_image_provider_container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,20 +7,20 @@
     z-index: 22;
 }
 
-.circular_image_fourth_child_wrapper {
+.circular_image_provider_fourth_child_wrapper {
     margin-right: 0;
 }
 
-.circular_image_fourth_child_wrapper:first-child {
+.circular_image_provider_fourth_child_wrapper:first-child {
     margin-left: 0;
     margin-top: 72px !important;
 }
 
-.circular_image_container:last-child{
+.circular_image_provider_container:last-child{
     margin-right: 0;
 }
 
-.circular_image_wrap {
+.circular_image_provider_wrap {
     position: relative;
     border: 1px solid #010D1E;
     border-radius: 50%;
@@ -31,19 +31,19 @@
     background: white;
 }
 
-.circular_image_icon {
+.circular_image_provider_icon {
     height: 150px;
     width: 150px;
     object-fit: contain;
     border-radius: 50%;
 }
 
-.circular_image_number {
+.circular_image_provider_number {
     position: absolute;
     top: 0;
     background: #010D1E;
     color: white;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 700;
     font-family: 'Manrope', sans-serif;
     padding: 5px 15px;
@@ -51,7 +51,7 @@
     border-radius: 50%;
 }
 
-.circular_image_text {
+.circular_image_provider_text {
     font-size: 14px;
     font-weight: 400;
     line-height: 21px;
@@ -62,25 +62,22 @@
     width: 190px;
 }
 
-@media screen and (min-width: 1150px) {
-    .circular_image_container{
+@media screen and (min-width: 1400px) {
+    .circular_image_provider_container{
         margin-right: 155px;
         margin-top: 0px;
     }
-    .circular_image_fourth_child_wrapper {
+    .circular_image_provider_fourth_child_wrapper {
         margin-right: 110px !important;
         margin-top: 0 !important;
     }
-    .circular_image_fourth_child_wrapper:first-child {
+    .circular_image_provider_fourth_child_wrapper:first-child {
         margin-left: 100px;
         margin-top: 0 !important;
     }
-    .circular_image_text {
+    .circular_image_provider_text {
         width: 212px;
         font-size: 16px;
         line-height: 24px;
-    }
-    .circular_image_number {
-        font-size: 25px;
     }
 }

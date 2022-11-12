@@ -3,6 +3,7 @@ import BenefitOption from "./BenefitOption";
 import "./Benefits.css";
 import Option1 from "../images/benefit1.png";
 import Option2 from "../images/benefit2.png";
+import Option3 from "../images/benefit3.png";
 
 const Benefits = () => {
   return (
@@ -11,8 +12,11 @@ const Benefits = () => {
         image={Option1}
         text="Service providers you can trust not to cancel at the last minute"
       />
-      <BenefitOption text="Get matched with Self-Care service specialists" />
-      <BenefitOption image={Option2} text="Same-day appointment" />
+      <BenefitOption
+        image={Option2}
+        text="Get matched with Self-Care service specialists"
+      />
+      <BenefitOption image={Option3} text="Same-day appointment" />
     </div>
   );
 };

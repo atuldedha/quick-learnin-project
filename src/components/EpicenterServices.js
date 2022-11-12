@@ -11,7 +11,7 @@ const EpicenterServices = () => {
     <div className="epicenter_services_container">
       <img src={Service} alt="service" className="epicenter_service_image" />
 
-      <div className="spicenter_service_description_container">
+      <div className="epicenter_service_description_container">
         <span className="epicenter_services_heading">Epicenter Services</span>
         <EpicenterServiceOption
           icon={Service1}

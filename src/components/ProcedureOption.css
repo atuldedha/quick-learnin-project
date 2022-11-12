@@ -37,6 +37,14 @@
 }
 
 @media screen and (min-width: 900px){
+    .procedure_option_image_container {
+        width: 33px;
+        height: 33px;
+    }
+    .procedure_option_image {
+        width: 10px !important;
+        height: 6px !important;
+    }
     .procedure_option_text {
         font-size: 16px;
         line-height: 30px;

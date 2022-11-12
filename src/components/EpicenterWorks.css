@@ -52,7 +52,7 @@
     bottom: 40px;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1150px) {
     .epicenter_works_container {
         padding: 100px 99px 110px 99px;
     }

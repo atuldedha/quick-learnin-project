@@ -4,7 +4,7 @@ import BannerImage from "../images/banner1.png";
 import BannerSmall from "../images/bannerSmall.png";
 import { useWindowSize } from "../utils/WindowResizeHook";
 
-const Banner = () => {
+const Banner = ({ headingText, buttonText }) => {
   const [width, height] = useWindowSize();
   return (
     <div className="banner_container">
@@ -16,10 +16,8 @@ const Banner = () => {
         )}
 
         <div className="banner_text_container">
-          <span className="banner_title_text">
-            Self-care services to look & feel your best.
-          </span>
-          <button className="banner_button">Book A Therapist</button>
+          <span className="banner_title_text">{headingText}</span>
+          <button className="banner_button">{buttonText}</button>
         </div>
       </div>
     </div>

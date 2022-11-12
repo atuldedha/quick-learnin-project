@@ -8,6 +8,10 @@
 
 .benefit_option_image_container{
     width: 10%;
+    background-image: url("../images/benefitsImagebg.png");
+    background-size: cover;
+    background-position: center;
+    padding: 28px 32px 24px 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,5 +48,9 @@
     }
     .benefit_option_text{
         font-size: 16px;
+        line-height: 30px;
+    }
+    .benefit_option_image_container {
+        padding: 31px 35px 21px 35px;
     }
 }

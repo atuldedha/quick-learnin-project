@@ -3,11 +3,18 @@ import "./Header.css";
 import LogoImage from "../images/logo.svg";
 import { useWindowSize } from "../utils/WindowResizeHook";
 import Menu from "../images/blackMenu.png";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Header = ({ openSidebar, toggleSidebar }) => {
   const [selected, setSelected] = useState(1);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [width, height] = useWindowSize();
+
+  const handleRoute = () => {
+    navigate("/service_provider");
+  };
   return (
     <div className="container">
       <div className="left_section">
@@ -54,8 +61,12 @@ const Header = ({ openSidebar, toggleSidebar }) => {
         </div>
       </div>
       <div className="right_section">
-        <button className="right_button">Service Provider</button>
-        <button className="right_button">Service Provider</button>
+        <button className="right_button" onClick={handleRoute}>
+          {location.pathname === "/service_provider"
+            ? "Sign up"
+            : "Service Provider"}
+        </button>
+        <button className="right_button">Contact Us</button>
       </div>
     </div>
   );
