@@ -20,12 +20,12 @@ const EpicenterWroks = () => {
         <CircularImage
           image={EpicenterWorks2}
           index={2}
-          text="Book a massage, facial or wax appointment."
+          text="Arrive at an Epicenter location near you."
         />
         <CircularImage
           image={EpicenterWorks3}
           index={3}
-          text="Book a massage, facial or wax appointment."
+          text="Rate your experience and/or leave a tip."
         />
       </div>
 
