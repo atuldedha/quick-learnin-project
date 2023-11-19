@@ -1,0 +1,72 @@
+.servicesSelection_container {
+  padding: 10px;
+  margin: 10px 20px 16px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  background-color: var(--gray1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.servicesSelection_text_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+.servicesSelection_text_container:hover {
+  background-color: var(--pink160);
+  border-radius: 10px;
+}
+
+.servicesSelection__text_name {
+  font-size: 20px;
+  font-family: "Manrope" sans-serif;
+  font-weight: 500;
+  color: var(--blue1);
+}
+
+.servicesSelection__text_price {
+  font-size: 10px;
+  font-family: "Manrope" sans-serif;
+  font-weight: 400;
+  color: var(--blue1);
+  text-decoration: italic;
+}
+
+.servicesSelection_button_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.servicesSelection_button {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--white);
+  background-color: var(--pink160);
+  font-family: "Manrope" sans-serif;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.servicesSelection_row_container {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.servicesSelection__no_service_text {
+  margin: 10px 20px;
+  display: block;
+  font-size: 24px;
+  font-family: "Manrope" sans-serif;
+  font-weight: 500;
+  color: var(--black);
+}

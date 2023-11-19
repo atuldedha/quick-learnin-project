@@ -1,0 +1,27 @@
+.backButton_container {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  width: max-content;
+  border: 1px solid var(--blue2);
+  border-radius: 10px;
+  margin-left: 20px;
+  gap: 5px;
+  width: 80px;
+  justify-content: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.backButton_left_icon {
+  height: 18px;
+  width: 18px;
+  color: var(--blue2);
+}
+
+.backButton_text {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Manrope", sans-serif;
+  color: var(--gray4);
+}

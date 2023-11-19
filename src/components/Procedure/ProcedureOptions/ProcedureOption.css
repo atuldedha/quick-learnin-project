@@ -1,0 +1,52 @@
+.procedure_option_container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 27px;
+}
+
+.procedure_option_image_container {
+  height: 29px;
+  width: 29px;
+  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--black1);
+  border-radius: 50%;
+}
+
+.procedure_option_image {
+  height: 6px;
+  width: 9px;
+}
+
+.procedure_option_text {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  width: 80%;
+  margin-left: 25px;
+  color: var(--black1);
+}
+
+.procedure_option_container:last-child {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 900px) {
+  .procedure_option_image_container {
+    width: 33px;
+    height: 33px;
+  }
+  .procedure_option_image {
+    width: 10px !important;
+    height: 6px !important;
+  }
+  .procedure_option_text {
+    font-size: 16px;
+    line-height: 30px;
+  }
+}

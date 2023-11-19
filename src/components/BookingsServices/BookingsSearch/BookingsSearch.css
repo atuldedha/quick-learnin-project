@@ -1,0 +1,28 @@
+.bookingsSearch_container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--gray2);
+  padding: 5px 10px;
+  width: 250px;
+  margin-left: 20px;
+  border-radius: 8px;
+}
+
+.booksSearch_input_box {
+  background-color: var(--gray3);
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+}
+
+.bookingsSearch_icon {
+  height: 20px;
+  width: 20px;
+  color: black;
+}

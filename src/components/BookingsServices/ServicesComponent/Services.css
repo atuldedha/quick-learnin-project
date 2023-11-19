@@ -1,0 +1,18 @@
+.bookingsServices_container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.bookings_show_services_name {
+  font-size: 22px;
+  font-family: "Manrope" sans-serif;
+  font-weight: 600;
+  color: var(--blue1);
+  text-align: center;
+  width: 100%;
+}

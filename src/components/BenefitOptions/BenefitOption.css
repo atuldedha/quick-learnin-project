@@ -1,0 +1,56 @@
+.benefit_option_container {
+  display: flex;
+  align-items: center;
+  padding: 15px 5px 15px 18px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.benefit_option_image_container {
+  width: 10%;
+  background-image: url("../../images/benefitsImagebg.png");
+  background-size: cover;
+  background-position: center;
+  padding: 28px 32px 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.benefit_option_image {
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+}
+
+.benefit_option_text {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  font-family: "Poppins", sans-serif;
+  color: var(--black1);
+  margin-left: 20px;
+  width: 70%;
+}
+
+.benefit_option_container:last-child {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 900px) {
+  .benefit_option_container {
+    margin-bottom: 0;
+    margin-right: 40px;
+    width: 33%;
+  }
+  .benefit_option_container:last-child {
+    margin-right: 0;
+  }
+  .benefit_option_text {
+    font-size: 16px;
+    line-height: 30px;
+  }
+  .benefit_option_image_container {
+    padding: 31px 35px 21px 35px;
+  }
+}

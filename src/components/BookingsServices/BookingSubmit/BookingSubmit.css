@@ -1,0 +1,195 @@
+.bookingsSubmit_container {
+  padding: 10px 20px;
+  margin: 10px 20px;
+  background-color: var(--gray2);
+  border-radius: 10px;
+}
+
+.bookingsSubmit_cards_container {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.bookingsSubmit_left_container {
+  flex-basis: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bookingsSubmit_heading {
+  font-size: 14px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  margin-bottom: 18px;
+  margin-top: 5px;
+}
+
+.bookingsSubmit_input {
+  background-color: var(--white);
+  padding: 10px 12px;
+  font-size: 12px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.divider {
+  width: 100%;
+  border: 1px solid var(--gray4);
+  margin: 0 0 14px;
+}
+
+.bookingsSubmit_right_container {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+}
+
+.bookingsSubmit_icon_text {
+  height: 40px;
+  width: 40px;
+  font-size: 16px;
+  font-family: "Manrope", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray4);
+  border-radius: 50%;
+}
+
+.bookingsSubmit_icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.bookingsSubmit_appointment_container {
+  padding: 5px 5px 10px;
+  border-bottom: 1px dashed var(--gray4);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.bookingsSubmit_technician_name {
+  font-size: 14px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.bookingsSubmit_appointment_info_container {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1;
+  width: 100%;
+}
+
+.bookingsSubmit_appointment_info_text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bookingsSubmit_service__name_text,
+.bookingsSubmit_time_text,
+.bookingsSubmit_note_text {
+  font-size: 14px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.bookingsSubmit_add_note_button {
+  width: max-content;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  color: var(--white);
+  background-color: var(--pink1);
+  border: none;
+  border-radius: 8px;
+  margin-top: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.bookingsSubmit_add_note_icon {
+  height: 14px;
+  width: 14px;
+  color: var(--white);
+  margin-right: 4px;
+}
+
+.bookingsSubmit_add_note_button:hover {
+  transform: scale(1.1);
+}
+
+.bookingsSubmit_buttons_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+}
+
+.bookingsSubmit_add_more_button,
+.bookingsSubmit_book_button {
+  padding: 8px 14px;
+  width: 100%;
+  flex-basis: 50%;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  color: var(--white);
+  background-color: var(--pink1);
+  border: none;
+  border-radius: 8px;
+  margin-top: 14px;
+  cursor: pointer;
+}
+
+.bookingsSubmit_deleteIcon {
+  height: 25px;
+  width: 25px;
+  color: var(--red1);
+  cursor: pointer;
+}
+
+.bookingsSubmit_close_icon {
+  display: flex;
+  align-self: flex-end;
+  height: 25px;
+  width: 25px;
+  margin-bottom: 14px;
+  color: var(--gray4);
+  cursor: pointer;
+}
+
+.bookingsSubmit_modal_input {
+  background-color: var(--gray2);
+  padding: 10px 12px;
+  font-size: 12px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  width: 95%;
+}

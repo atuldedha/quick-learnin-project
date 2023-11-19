@@ -1,0 +1,14 @@
+.benefits_container {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 20px;
+  background: #efe3de;
+}
+
+@media screen and (min-width: 900px) {
+  .benefits_container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

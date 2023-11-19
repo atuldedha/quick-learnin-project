@@ -1,0 +1,136 @@
+.container {
+  background: #f1e6e0;
+  padding: 19px 12px;
+  display: flex;
+  flex-direction: column;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+.left_section {
+  display: flex;
+  align-items: center;
+}
+
+.logo_image {
+  width: 69px;
+  height: 69px;
+}
+
+.title {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 23px;
+  color: var(--black1);
+  font-family: "Manrope", sans-serif;
+  text-transform: uppercase;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+.left_menu_container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.middle_section {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.option_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.option {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 23px;
+  color: var(--black1);
+  opacity: 0.8;
+  font-family: "Manrope", sans-serif;
+  margin-right: 65px;
+  position: relative;
+}
+
+.option:hover {
+  cursor: pointer;
+}
+
+.option_selected {
+  font-weight: 600 !important;
+  text-transform: uppercase;
+}
+
+.selected {
+  height: 7px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(1, 13, 30, 0.2);
+}
+
+.right_section {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.right_button {
+  padding: 12px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  font-family: "Manrope", sans-serif;
+  line-height: 16.39px;
+  color: var(--black1);
+  border: 1px solid var(--black1);
+  border-radius: 1px;
+  margin-right: 20px;
+  background: inherit;
+}
+
+.right_button:hover {
+  cursor: pointer;
+  border: 1px solid rgba(1, 13, 30, 0.2);
+}
+
+@media screen and (min-width: 1100px) {
+  .container {
+    flex-direction: row;
+    align-items: center;
+    padding: 18px 99px 13px 101px;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+  }
+  .middle_section {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .title {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 30.5px;
+  }
+
+  .right_section {
+    margin-top: 0px;
+  }
+  .right_button {
+    padding: 15px 22px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+  }
+}
