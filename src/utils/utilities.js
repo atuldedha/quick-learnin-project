@@ -77,7 +77,17 @@ export const services = [
   },
 ];
 
-export const categorizeTimings = (timings) => {
+export const categorizeTimings = (selectedServiceTime, date, bookedDates) => {
+  // Define the buffer time
+  const selectedTime = selectedServiceTime.split(" ")[0];
+  // Choose the service timings array based on selectedServiceTime
+  let serviceTimings;
+  if (selectedTime === "60") {
+    serviceTimings = serviceTimings60;
+  } else if (selectedTime === "90") {
+    serviceTimings = serviceTimings90;
+  }
+
   // Initialize empty result object
   const categorized = {
     morning: [],
@@ -86,22 +96,100 @@ export const categorizeTimings = (timings) => {
   };
 
   // Define time boundaries for categorization
-  const morningStartTime = 6; // 6:00 AM
-  const afternoonStartTime = 12; // 12:00 PM
-  const eveningStartTime = 18; // 6:00 PM
+  const morningStartTime = 6 * 60; // 6:00 AM in minutes
+  const afternoonStartTime = 12 * 60; // 12:00 PM in minutes
+  const eveningStartTime = 18 * 60; // 6:00 PM in minutes
+
+  // Helper function to convert HH:mm:ss to minutes
+  const convertToMinutes = (timeString) => {
+    const [hours, minutes] = timeString.split(":").map(Number);
+    return hours * 60 + minutes;
+  };
+
+  // Helper function to check if a given time range is booked
+  const isBooked = (fromTime, toTime, currentDate) => {
+    const fromTimeMinutes = convertToMinutes(fromTime);
+    const toTimeMinutes = convertToMinutes(toTime);
+
+    if (bookedDates?.length > 0) {
+      for (const bookedDate of bookedDates) {
+        const bookedFromTime = new Date(bookedDate.fromTime).toLocaleTimeString(
+          [],
+          { hour: "2-digit", minute: "2-digit" }
+        );
+        const bookedToTime = new Date(bookedDate.toTime).toLocaleTimeString(
+          [],
+          {
+            hour: "2-digit",
+            minute: "2-digit",
+          }
+        );
+
+        const bookedFromTimeMinutes = convertToMinutes(bookedFromTime);
+        const bookedToTimeMinutes = convertToMinutes(bookedToTime);
+
+        const bookedDateObj = new Date(bookedDate.fromTime);
+        const currentDateObj = new Date(currentDate);
+
+        if (
+          currentDateObj.getDate() === bookedDateObj.getDate() &&
+          ((fromTimeMinutes >= bookedFromTimeMinutes &&
+            fromTimeMinutes < bookedToTimeMinutes) ||
+            (toTimeMinutes > bookedFromTimeMinutes &&
+              toTimeMinutes <= bookedToTimeMinutes) ||
+            (fromTimeMinutes <= bookedFromTimeMinutes &&
+              toTimeMinutes >= bookedToTimeMinutes))
+        ) {
+          // Time range overlaps with a booked date, skip it
+          // console.log(
+          //   "true",
+          //   currentDateObj.getDate(),
+          //   bookedDateObj.getDate(),
+          //   bookedFromTime,
+          //   bookedToTime,
+          //   bookedFromTimeMinutes,
+          //   bookedToTimeMinutes
+          // );
+          return true;
+        }
+      }
+    }
+
+    // Time range does not overlap with any booked date
+    return false;
+  };
 
   // Iterate through the provided timings
-  for (const obj of timings) {
-    if (obj.fromTime) {
-      const fromTime = new Date(obj.fromTime);
-      const hour = fromTime.getHours();
+  for (const obj of serviceTimings) {
+    // console.log(isBooked(obj.fromTime, obj.toTime, date));
+    if (
+      obj.fromTime &&
+      obj.toTime &&
+      !isBooked(obj.fromTime, obj.toTime, date)
+    ) {
+      const fromTimeMinutes = convertToMinutes(obj.fromTime);
 
-      if (hour >= morningStartTime && hour < afternoonStartTime) {
-        categorized.morning.push(obj);
-      } else if (hour >= afternoonStartTime && hour < eveningStartTime) {
-        categorized.afternoon.push(obj);
+      if (
+        fromTimeMinutes >= morningStartTime &&
+        fromTimeMinutes < afternoonStartTime
+      ) {
+        categorized.morning.push({
+          fromTime: obj.fromTime,
+          toTime: obj.toTime,
+        });
+      } else if (
+        fromTimeMinutes >= afternoonStartTime &&
+        fromTimeMinutes < eveningStartTime
+      ) {
+        categorized.afternoon.push({
+          fromTime: obj.fromTime,
+          toTime: obj.toTime,
+        });
       } else {
-        categorized.evening.push(obj);
+        categorized.evening.push({
+          fromTime: obj.fromTime,
+          toTime: obj.toTime,
+        });
       }
     }
   }
@@ -109,11 +197,71 @@ export const categorizeTimings = (timings) => {
   return categorized;
 };
 
-export const formatTime = (time) => {
-  const hours = time.getHours();
-  const minutes = time.getMinutes();
+export const formatTime = (timeString) => {
+  // Create a reference date (e.g., '1970-01-01') to avoid invalid date issues
+  const referenceDate = "1970-01-01";
+
+  // Create a new date using the reference date and the provided time string
+  const dateWithTime = new Date(`${referenceDate}T${timeString}`);
+
+  // Extract hours, minutes, and AM/PM
+  const hours = dateWithTime.getHours();
+  const minutes = dateWithTime.getMinutes();
   const amOrPm = hours >= 12 ? "PM" : "AM";
   const formattedHours = hours % 12 || 12;
   const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+  // Return the formatted time string
   return `${formattedHours}:${formattedMinutes} ${amOrPm}`;
 };
+
+export const generateAppointmentMessages = (selectedServices) => {
+  const messages = [];
+
+  // Iterate over each category (e.g., "Massage", "Facial")
+  for (const categoryKey in selectedServices) {
+    const category = selectedServices[categoryKey];
+
+    // Iterate over each service within the category
+    for (const serviceKey in category) {
+      const service = category[serviceKey];
+
+      // Extract relevant information
+      const serviceName = service.selectedService.name;
+      const technicianName = service.technicianSelected.name;
+      const fromDate = new Date(service.dateAndTime.date);
+      const fromTime = service.dateAndTime.time.fromTime;
+      const toTime = service.dateAndTime.time.toTime;
+
+      // Construct the message
+      const message = `Servcie: ${serviceName}, Technician Selected: ${technicianName},Date and Time: ${fromDate.toLocaleDateString()} ${fromTime} - ${toTime}`;
+
+      // Push the message to the messages array
+      messages.push(message);
+    }
+  }
+
+  return messages;
+};
+
+const serviceTimings60 = [
+  { fromTime: "11:15:00", toTime: "12:15:00" },
+  { fromTime: "12:30:00", toTime: "13:30:00" },
+  { fromTime: "13:45:00", toTime: "14:45:00" },
+  { fromTime: "15:00:00", toTime: "16:00:00" },
+  { fromTime: "16:15:00", toTime: "17:15:00" },
+  { fromTime: "17:30:00", toTime: "18:30:00" },
+  { fromTime: "18:45:00", toTime: "19:45:00" },
+  { fromTime: "20:00:00", toTime: "21:00:00" },
+  { fromTime: "21:15:00", toTime: "22:15:00" },
+];
+
+const serviceTimings90 = [
+  { fromTime: "11:15:00", toTime: "12:45:00" },
+  { fromTime: "13:00:00", toTime: "14:30:00" },
+  { fromTime: "14:45:00", toTime: "16:15:00" },
+  { fromTime: "16:30:00", toTime: "18:00:00" },
+  { fromTime: "18:15:00", toTime: "19:45:00" },
+  { fromTime: "20:00:00", toTime: "21:30:00" },
+  { fromTime: "21:45:00", toTime: "23:15:00" },
+];

@@ -5,7 +5,7 @@ const tabs = [
   { id: 1, tabName: "Service" },
   { id: 2, tabName: "Technician" },
   { id: 3, tabName: "Time" },
-  { id: 4, tabName: "client" },
+  { id: 4, tabName: "Client" },
 ];
 
 const BookingTabs = ({ selectedTab, setSelectedTab }) => {

@@ -1,6 +1,6 @@
 import React from "react";
 
-const BookingsUserInfo = ({ formData, handleChange }) => {
+const BookingsUserInfo = ({ formData, handleChange, error }) => {
   return (
     <div className="bookingsSubmit_left_container">
       <input
@@ -27,6 +27,14 @@ const BookingsUserInfo = ({ formData, handleChange }) => {
         name="name"
         onChange={handleChange}
       />
+
+      {error?.show && (
+        <div className="bookingsSubmit_error_text">
+          <span>{error?.message?.phoneNumber}</span>
+          <span>{error?.message?.email}</span>
+          <span>{error?.message?.name}</span>
+        </div>
+      )}
     </div>
   );
 };

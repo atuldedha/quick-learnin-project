@@ -1,34 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ShowTimings.css";
 import { categorizeTimings, formatTime } from "../../../../utils/utilities";
 
-const ShowTimings = ({ results, handleTimeSelection }) => {
+const ShowTimings = ({
+  results,
+  handleTimeSelection,
+  serviceTime,
+  dateValue,
+  bookedSlots,
+}) => {
   const handleTimingClick = (timing) => {
     handleTimeSelection(timing);
   };
 
-  const categorisedTimings = categorizeTimings([
-    { fromTime: "2023-11-05T08:00:00" }, // Morning
-    { fromTime: "2023-11-05T14:00:00" }, // Afternoon
-    { fromTime: "2023-11-05T20:00:00" }, // Evening
-  ]);
+  const [categorisedTimings, setCategorisedTimings] = useState({});
+
+  useEffect(() => {
+    setCategorisedTimings(
+      categorizeTimings(serviceTime, dateValue.toDateString(), bookedSlots)
+    );
+  }, [dateValue, serviceTime, bookedSlots]);
 
   return (
     <div className="showTimings_container">
       {Object.keys(categorisedTimings)?.map((key) => (
         <div key={key}>
           <h4 className="showTimings_heading">{key}</h4>
-          {categorisedTimings[key].map((time, index) => (
-            <div className="showTimings_button_container" key={index}>
+          <div className="showTimings_timings_container">
+            {categorisedTimings[key].map((time, index) => (
               <button
                 key={index}
                 className="showTimings_button"
                 onClick={() => handleTimingClick(time)}
               >
-                {formatTime(new Date(time.fromTime))}
+                {formatTime(time.fromTime)}
               </button>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       ))}
     </div>

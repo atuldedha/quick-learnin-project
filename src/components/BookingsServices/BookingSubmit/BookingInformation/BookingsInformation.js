@@ -41,9 +41,11 @@ const BookingsInformation = ({
               </p>
               <p className="bookingsSubmit_time_text">
                 {formatTime(
-                  new Date(
-                    selectedServices[key][data]?.dateAndTime?.time?.fromTime
-                  )
+                  selectedServices[key][data]?.dateAndTime?.time?.fromTime
+                )}{" "}
+                -{" "}
+                {formatTime(
+                  selectedServices[key][data]?.dateAndTime?.time?.toTime
                 )}
               </p>
               <p className="bookingsSubmit_note_text">

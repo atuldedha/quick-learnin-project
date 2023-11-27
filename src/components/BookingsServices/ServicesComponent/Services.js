@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Services.css";
 import ServiceCard from "../ServiceCard/ServiceCard";
 import BackButton from "../../BackButton/BackButton";
@@ -13,14 +13,43 @@ const Services = ({
   setSelectedTab,
   setShowServicesWithPrice,
   showServicesWithPrice,
+  setServiceTime,
+  setSelectedCardService,
+  selectedServices,
 }) => {
   const [searchValue, setSearchValue] = useState("");
 
-  const [showAddMoreItemButtons, setShowAddMoreItemButtons] = useState(false);
   const [availableServcies, setAvailableServices] = useState(services);
   const [availableSelectedServices, setAvailableSelectedServices] = useState(
     selectedCard?.servicesOffered
   );
+
+  const [filteredServices, setFilteredServices] = useState([]);
+
+  useEffect(() => {
+    // Filter out services that are already selected
+    const filtered = availableSelectedServices?.filter((service) => {
+      const cardName = selectedCard?.name;
+      const serviceName = service.name;
+
+      // Check if the service is selected for the card
+      if (selectedServices?.[cardName]?.[serviceName]) {
+        const selectedService =
+          selectedServices[cardName][serviceName].selectedService;
+
+        // Compare the name and time of the selected service with the current service
+        return (
+          selectedService.name !== service.name ||
+          selectedService.time !== service.time
+        );
+      }
+
+      // If the service is not selected, include it in the filtered list
+      return true;
+    });
+
+    setFilteredServices(filtered);
+  }, [availableSelectedServices, selectedServices, selectedCard]);
 
   const handleCardClick = (service) => {
     setSelectedCard(service);
@@ -45,12 +74,29 @@ const Services = ({
     }
   };
 
+  const deleteService = () => {
+    setSelectedServices((prevSelectedServices) => {
+      const updatedServices = { ...prevSelectedServices };
+
+      // Check if the selected card exists
+      if (updatedServices[selectedCard.name]) {
+        // Delete
+        delete updatedServices[selectedCard.name];
+      }
+
+      return updatedServices;
+    });
+  };
+
   const handleBackClick = () => {
+    deleteService();
     setSelectedCard({});
     setShowServicesWithPrice(false);
   };
 
   const handleServiceClick = (selectedService) => {
+    setServiceTime(selectedService?.time);
+    setSelectedCardService(selectedService);
     setSelectedServices((prevSelectedServices) => {
       return {
         ...prevSelectedServices,
@@ -95,11 +141,8 @@ const Services = ({
 
       <ServicesSelection
         handleServiceClick={handleServiceClick}
-        servicesOffered={availableSelectedServices}
+        servicesOffered={filteredServices}
         setSelectedTab={setSelectedTab}
-        setShowServicesWithPrice={setShowServicesWithPrice}
-        showAddMoreItemButtons={showAddMoreItemButtons}
-        setShowAddMoreItemButtons={setShowAddMoreItemButtons}
       />
     </div>
   );

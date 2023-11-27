@@ -1,0 +1,57 @@
+.bookings_container {
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bookings_header_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.bookings_header_logo {
+  width: 200px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.bookings_header_text_container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bookings_header_logo_text {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 23px;
+  color: var(--black1);
+  font-family: "Manrope", sans-serif;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bookings_header_address_text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 23px;
+  color: var(--black1);
+  font-family: "Manrope", sans-serif;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bookings_header_phone_text {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 23px;
+  color: var(--black1);
+  font-family: "Manrope", sans-serif;
+  text-transform: uppercase;
+  white-space: nowrap;
+}

@@ -1,0 +1,28 @@
+.bookingsConfirmation_container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+  align-items: center;
+}
+
+.bookingsConfirmation_bold_text,
+.bookingsConfirmation_success_text {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--green1);
+  margin: 10px 0;
+}
+
+.bookingsConfirmation_check_icon {
+  height: 50px;
+  width: 50px;
+  color: var(--green1);
+}
+
+.bookingsConfirmation_bold_text {
+  color: var(--black);
+  font-size: 28px;
+}

@@ -11,9 +11,10 @@ const BookingsCalendar = ({
   setSelectedTab,
   setSelectedTiming,
   addTimingToService,
+  serviceTime,
+  bookedTimings,
 }) => {
   const [value, onChange] = useState(new Date());
-
   const handleTimeSelection = (time) => {
     setSelectedTiming(time);
     addTimingToService(time, value);
@@ -42,6 +43,9 @@ const BookingsCalendar = ({
         setSelectedTab={setSelectedTab}
         setSelectedTiming={setSelectedTiming}
         handleTimeSelection={handleTimeSelection}
+        serviceTime={serviceTime}
+        dateValue={value}
+        bookedSlots={bookedTimings[selectedTechnician._id].bookedTimings}
       />
     </div>
   );

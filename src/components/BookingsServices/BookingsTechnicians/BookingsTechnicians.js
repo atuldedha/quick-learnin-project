@@ -3,34 +3,16 @@ import "./BookingsTechnicians.css";
 import ServiceCard from "../ServiceCard/ServiceCard";
 import BackButton from "../../BackButton/BackButton";
 
-const technicians = [
-  {
-    id: 1,
-    name: "Marry",
-    image: "",
-  },
-  {
-    id: 2,
-    name: "Angela",
-    image: "",
-  },
-  {
-    id: 3,
-    name: "Joey",
-    image: "",
-  },
-  {
-    id: 4,
-    name: "Ross",
-    image: "",
-  },
-];
-
 const BookingsTechnicians = ({
   setSelectedTab,
   setSelectedTechnician,
   setShowServicesWithPrice,
   addTechnicianToService,
+  allTechnicians,
+  selectedCard,
+  selectedCardService,
+  setSelectedCardService,
+  setSelectedServices,
 }) => {
   const handleCardClick = (technician) => {
     setSelectedTechnician(technician);
@@ -38,7 +20,23 @@ const BookingsTechnicians = ({
     setSelectedTab(3);
   };
 
+  const deleteService = () => {
+    setSelectedServices((prevSelectedServices) => {
+      const updatedServices = { ...prevSelectedServices };
+
+      // Check if the selected card exists
+      if (updatedServices[selectedCard.name]) {
+        // Delete the selected service from the selected card
+        delete updatedServices[selectedCard.name][selectedCardService.name];
+      }
+
+      return updatedServices;
+    });
+    setSelectedCardService({});
+  };
+
   const handleBackClick = () => {
+    deleteService();
     setShowServicesWithPrice(true);
     setSelectedTab(1);
   };
@@ -47,9 +45,9 @@ const BookingsTechnicians = ({
     <>
       <BackButton handleBackClick={handleBackClick} />
       <div className="bookingsTechnicians_container">
-        {technicians.map((technician) => (
+        {allTechnicians?.map((technician) => (
           <ServiceCard
-            key={technician.id}
+            key={technician._id}
             service={technician}
             handleCardClick={handleCardClick}
             spanBg

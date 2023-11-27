@@ -33,15 +33,17 @@ const Contact = ({ innerRef }) => {
     }
 
     const templateParams = {
+      subject: `New Query from ${formData?.firstName}`,
       name: formData?.firstName + formData?.lastName,
       email: formData?.email,
+      phoneNumber: formData?.phoneNumber,
       message: formData?.message,
     };
 
     emailjs
       .send(
         "service_mpkrzin",
-        "template_rc7fmfw",
+        "template_33rlgxi",
         templateParams,
         "nl7Y-oltcKO5AYPUR"
       )
