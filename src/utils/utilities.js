@@ -3,7 +3,7 @@ import FacialImage from "../images/facialImage.jpeg";
 export const services = [
   {
     id: 1,
-    name: "Massage",
+    name: "Holistic Wellness Massage",
     image:
       "https://envieposqastorage.blob.core.windows.net/zotastatic/categorypics/MassageV2.png",
     servicesOffered: [
@@ -70,7 +70,7 @@ export const services = [
   },
   {
     id: 4,
-    name: "Pedicure",
+    name: "Medical Pedicure",
     image:
       "https://envieposqastorage.blob.core.windows.net/zotastatic/categorypics/FullSetFillInV2.png",
     servicesOffered: [],
@@ -129,10 +129,12 @@ export const categorizeTimings = (selectedServiceTime, date, bookedDates) => {
         const bookedToTimeMinutes = convertToMinutes(bookedToTime);
 
         const bookedDateObj = new Date(bookedDate.fromTime);
+        bookedDateObj.setHours(0, 0, 0, 0);
         const currentDateObj = new Date(currentDate);
+        currentDateObj.setHours(0, 0, 0, 0);
 
         if (
-          currentDateObj.getDate() === bookedDateObj.getDate() &&
+          currentDateObj.getTime() === bookedDateObj.getTime() &&
           ((fromTimeMinutes >= bookedFromTimeMinutes &&
             fromTimeMinutes < bookedToTimeMinutes) ||
             (toTimeMinutes > bookedFromTimeMinutes &&
@@ -140,16 +142,6 @@ export const categorizeTimings = (selectedServiceTime, date, bookedDates) => {
             (fromTimeMinutes <= bookedFromTimeMinutes &&
               toTimeMinutes >= bookedToTimeMinutes))
         ) {
-          // Time range overlaps with a booked date, skip it
-          // console.log(
-          //   "true",
-          //   currentDateObj.getDate(),
-          //   bookedDateObj.getDate(),
-          //   bookedFromTime,
-          //   bookedToTime,
-          //   bookedFromTimeMinutes,
-          //   bookedToTimeMinutes
-          // );
           return true;
         }
       }
@@ -215,6 +207,19 @@ export const formatTime = (timeString) => {
   return `${formattedHours}:${formattedMinutes} ${amOrPm}`;
 };
 
+export const generateClientMessage = (selectedServices) => {
+  const messages = [];
+  // Iterate over each category (e.g., "Massage", "Facial")
+  for (const categoryKey in selectedServices) {
+    messages.push(categoryKey);
+  }
+
+  let resultString = messages.join(", ");
+  const generatedMessage = `Thank you for booking your ${resultString} service. We will confirm your appointment shortly.`;
+
+  return generatedMessage;
+};
+
 export const generateAppointmentMessages = (selectedServices) => {
   const messages = [];
 
@@ -244,24 +249,41 @@ export const generateAppointmentMessages = (selectedServices) => {
   return messages;
 };
 
+export const generateAppointmentMessages2 = (selectedServices) => {
+  const messages = [];
+
+  // Iterate over each category (e.g., "Massage", "Facial")
+  for (const categoryKey in selectedServices) {
+    const category = selectedServices[categoryKey];
+    messages.push(category);
+  }
+
+  let resultString = messages.join(" ");
+
+  const generatedMessage = `Thank you for booking your ${resultString} service with Epicenter!. We
+  will confirm your appointment via email.`;
+
+  return generatedMessage;
+};
+
 const serviceTimings60 = [
-  { fromTime: "11:15:00", toTime: "12:15:00" },
-  { fromTime: "12:30:00", toTime: "13:30:00" },
-  { fromTime: "13:45:00", toTime: "14:45:00" },
-  { fromTime: "15:00:00", toTime: "16:00:00" },
-  { fromTime: "16:15:00", toTime: "17:15:00" },
-  { fromTime: "17:30:00", toTime: "18:30:00" },
-  { fromTime: "18:45:00", toTime: "19:45:00" },
-  { fromTime: "20:00:00", toTime: "21:00:00" },
-  { fromTime: "21:15:00", toTime: "22:15:00" },
+  { fromTime: "10:15:00", toTime: "11:15:00" },
+  { fromTime: "11:30:00", toTime: "12:30:00" },
+  { fromTime: "12:45:00", toTime: "13:45:00" },
+  { fromTime: "14:00:00", toTime: "15:00:00" },
+  { fromTime: "15:15:00", toTime: "16:15:00" },
+  { fromTime: "16:30:00", toTime: "17:30:00" },
+  { fromTime: "17:45:00", toTime: "18:45:00" },
+  { fromTime: "19:00:00", toTime: "20:00:00" },
+  { fromTime: "20:15:00", toTime: "21:15:00" },
 ];
 
 const serviceTimings90 = [
-  { fromTime: "11:15:00", toTime: "12:45:00" },
-  { fromTime: "13:00:00", toTime: "14:30:00" },
-  { fromTime: "14:45:00", toTime: "16:15:00" },
-  { fromTime: "16:30:00", toTime: "18:00:00" },
-  { fromTime: "18:15:00", toTime: "19:45:00" },
-  { fromTime: "20:00:00", toTime: "21:30:00" },
-  { fromTime: "21:45:00", toTime: "23:15:00" },
+  { fromTime: "10:15:00", toTime: "11:45:00" },
+  { fromTime: "12:00:00", toTime: "13:30:00" },
+  { fromTime: "13:45:00", toTime: "15:15:00" },
+  { fromTime: "15:30:00", toTime: "17:00:00" },
+  { fromTime: "17:15:00", toTime: "18:45:00" },
+  { fromTime: "19:00:00", toTime: "20:30:00" },
+  { fromTime: "20:45:00", toTime: "22:15:00" },
 ];

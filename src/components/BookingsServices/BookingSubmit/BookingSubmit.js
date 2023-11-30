@@ -7,7 +7,10 @@ import { XCircleIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import { getURLs } from "../../../utils/urlConfig";
 import emailjs from "@emailjs/browser";
-import { generateAppointmentMessages } from "../../../utils/utilities";
+import {
+  generateAppointmentMessages,
+  generateClientMessage,
+} from "../../../utils/utilities";
 import { useNavigate } from "react-router-dom";
 
 const BookingSubmit = ({
@@ -111,6 +114,7 @@ const BookingSubmit = ({
     const templateParams = {
       to_email: formData?.email,
       name: formData?.name,
+      message: generateClientMessage(selectedServices),
     };
 
     emailjs

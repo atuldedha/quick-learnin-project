@@ -1,6 +1,5 @@
 import React from "react";
 import BookingsHeader from "../../components/BookingsServices/BookingsHeader/BookingsHeader";
-import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import "./BookingsConfirmation.css";
 
 const BookingsConfirmation = () => {
@@ -9,13 +8,15 @@ const BookingsConfirmation = () => {
       <BookingsHeader />
 
       <span className="bookingsConfirmation_success_text">
-        <CheckCircleIcon className="bookingsConfirmation_check_icon" /> We have
-        received you booking request. You will receive a confirmation email from
-        our side. For any query please Contact Us.
+        Thank you for booking your service with Epicenter!. We will confirm your
+        appointment via email
+        <br />
       </span>
-      <br />
-      <br />
-      <span className="bookingsConfirmation_bold_text">Thanks</span>
+      <span className="bookingsConfirmation_bold_text">
+        Epicenter Wellness, Here to care for you
+        <br />
+        Thanks
+      </span>
     </div>
   );
 };

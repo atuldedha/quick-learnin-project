@@ -35,6 +35,7 @@ const BookingsCalendar = ({
       <Calendar
         onChange={onChange}
         value={value}
+        minDate={new Date()}
         className="bookingsCalendar_customCalendar"
       />
 

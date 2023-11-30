@@ -51,10 +51,7 @@ const Footer = () => {
               <img src={PhoneIcon} alt="phone" className="footer_option_icon" />
               <span className="footer_option_text">+1 410-914-7131</span>
             </div>
-            <div
-              className="footer_contact_option"
-              style={{ marginLeft: "29px" }}
-            >
+            <div className="footer_contact_option location_option">
               <img
                 src={LocationIcon}
                 alt="location_icon"

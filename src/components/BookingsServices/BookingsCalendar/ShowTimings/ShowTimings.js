@@ -15,6 +15,15 @@ const ShowTimings = ({
 
   const [categorisedTimings, setCategorisedTimings] = useState({});
 
+  const currentDate = new Date().toISOString().split("T")[0];
+
+  // Get today's date
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const currentTime = new Date().toISOString();
+  const selectedDateValue = new Date(dateValue);
+  selectedDateValue.setHours(0, 0, 0, 0);
+
   useEffect(() => {
     setCategorisedTimings(
       categorizeTimings(serviceTime, dateValue.toDateString(), bookedSlots)
@@ -27,15 +36,23 @@ const ShowTimings = ({
         <div key={key}>
           <h4 className="showTimings_heading">{key}</h4>
           <div className="showTimings_timings_container">
-            {categorisedTimings[key].map((time, index) => (
-              <button
-                key={index}
-                className="showTimings_button"
-                onClick={() => handleTimingClick(time)}
-              >
-                {formatTime(time.fromTime)}
-              </button>
-            ))}
+            {categorisedTimings[key].map(
+              (time, index) =>
+                (selectedDateValue > today ||
+                  (selectedDateValue.getTime() === today.getTime() &&
+                    currentTime <
+                      new Date(
+                        `${currentDate}T${time.fromTime}`
+                      ).toISOString())) && (
+                  <button
+                    key={index}
+                    className="showTimings_button"
+                    onClick={() => handleTimingClick(time)}
+                  >
+                    {formatTime(time.fromTime)} - {formatTime(time.toTime)}
+                  </button>
+                )
+            )}
           </div>
         </div>
       ))}

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Bookings.css";
-import Logo from "../../images/logo.png";
 import BookingTabs from "../../components/BookingTabs/BookingTabs";
 import Services from "../../components/BookingsServices/ServicesComponent/Services";
 import BookingsTechnicians from "../../components/BookingsServices/BookingsTechnicians/BookingsTechnicians";
 import BookingsCalendar from "../../components/BookingsServices/BookingsCalendar/BookingsCalendar";
 import BookingSubmit from "../../components/BookingsServices/BookingSubmit/BookingSubmit";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { getURLs } from "../../utils/urlConfig";
 import BookingsHeader from "../../components/BookingsServices/BookingsHeader/BookingsHeader";
@@ -77,10 +75,15 @@ const Bookings = () => {
 
   const addTimingToService = (timing, date) => {
     const formattedDate = date.toISOString().split("T")[0];
+
+    const fromTime = new Date(`${formattedDate}T${timing.fromTime}`);
+    const toTime = new Date(`${formattedDate}T${timing.toTime}`);
+
     const formattedDateObj = {
-      fromTime: `${formattedDate}T${timing.fromTime}`,
-      toTime: `${formattedDate}T${timing.toTime}`,
+      fromTime: fromTime,
+      toTime: toTime,
     };
+
     setBookedTimings((prev) => {
       const updatedBookedTimings = { ...prev };
 
