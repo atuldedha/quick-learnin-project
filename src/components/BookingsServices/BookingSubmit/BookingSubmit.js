@@ -10,6 +10,7 @@ import emailjs from "@emailjs/browser";
 import {
   generateAppointmentMessages,
   generateClientMessage,
+  generateClientMessage2,
 } from "../../../utils/utilities";
 import { useNavigate } from "react-router-dom";
 
@@ -148,7 +149,10 @@ const BookingSubmit = ({
         if (response?.status === 200) {
           resetData();
           setDisableButton(false);
-          navigate(`/booking-confirmation`, { replace: true });
+          navigate(`/booking-confirmation`, {
+            state: generateClientMessage2(selectedServices),
+            replace: true,
+          });
         }
       })
       .catch((error) => {

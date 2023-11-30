@@ -8,6 +8,7 @@ import BookingSubmit from "../../components/BookingsServices/BookingSubmit/Booki
 import axios from "axios";
 import { getURLs } from "../../utils/urlConfig";
 import BookingsHeader from "../../components/BookingsServices/BookingsHeader/BookingsHeader";
+import { formatDate } from "../../utils/utilities";
 
 const Bookings = () => {
   const [selectedTab, setSelectedTab] = useState(1);
@@ -74,7 +75,7 @@ const Bookings = () => {
   };
 
   const addTimingToService = (timing, date) => {
-    const formattedDate = date.toISOString().split("T")[0];
+    const formattedDate = formatDate(new Date());
 
     const fromTime = new Date(`${formattedDate}T${timing.fromTime}`);
     const toTime = new Date(`${formattedDate}T${timing.toTime}`);
@@ -204,7 +205,7 @@ const Bookings = () => {
 
         {selectedTab === 4 && (
           <BookingSubmit
-            selectedServices={allSelectedServices}
+            selectedServices={selectedServices}
             selectedTechnician={selectedTechnician}
             selectedTiming={selectedTiming}
             setSelectedTab={setSelectedTab}

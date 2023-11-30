@@ -220,6 +220,19 @@ export const generateClientMessage = (selectedServices) => {
   return generatedMessage;
 };
 
+export const generateClientMessage2 = (selectedServices) => {
+  const messages = [];
+  // Iterate over each category (e.g., "Massage", "Facial")
+  for (const categoryKey in selectedServices) {
+    messages.push(categoryKey);
+  }
+
+  let resultString = messages.join(", ");
+  const generatedMessage = `Thank you for booking your ${resultString} service with Epicenter! We will confirm your appointment via mail.`;
+
+  return generatedMessage;
+};
+
 export const generateAppointmentMessages = (selectedServices) => {
   const messages = [];
 
@@ -287,3 +300,10 @@ const serviceTimings90 = [
   { fromTime: "19:00:00", toTime: "20:30:00" },
   { fromTime: "20:45:00", toTime: "22:15:00" },
 ];
+
+export const formatDate = (date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
