@@ -47,4 +47,8 @@
   .bookingsConfirmation_text {
     align-items: center;
   }
+
+  .bookingsConfirmation_success_text {
+    text-align: center;
+  }
 }
