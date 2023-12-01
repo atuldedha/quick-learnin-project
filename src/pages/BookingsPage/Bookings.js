@@ -75,7 +75,7 @@ const Bookings = () => {
   };
 
   const addTimingToService = (timing, date) => {
-    const formattedDate = formatDate(new Date());
+    const formattedDate = formatDate(date);
 
     const fromTime = new Date(`${formattedDate}T${timing.fromTime}`);
     const toTime = new Date(`${formattedDate}T${timing.toTime}`);

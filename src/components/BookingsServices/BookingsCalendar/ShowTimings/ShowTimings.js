@@ -44,7 +44,7 @@ const ShowTimings = ({
                   (selectedDateValue.getTime() === today.getTime() &&
                     currentTime <
                       new Date(
-                        `${formatDate(new Date())}T${time.fromTime}`
+                        `${formatDate(dateValue)}T${time.fromTime}`
                       ).toISOString())) && (
                   <button
                     key={index}
