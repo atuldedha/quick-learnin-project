@@ -224,7 +224,7 @@ export const generateClientMessage = (selectedServices) => {
   const messages = [];
   // Iterate over each category (e.g., "Massage", "Facial")
   for (const categoryKey in selectedServices) {
-    messages.push(categoryKey);
+    messages.push(serviceKeyMapping[categoryKey]);
   }
 
   let resultString = messages.join(", ");
@@ -237,7 +237,7 @@ export const generateClientMessage2 = (selectedServices) => {
   const messages = [];
   // Iterate over each category (e.g., "Massage", "Facial")
   for (const categoryKey in selectedServices) {
-    messages.push(categoryKey);
+    messages.push(serviceKeyMapping[categoryKey]);
   }
 
   let resultString = messages.join(", ");
@@ -265,7 +265,7 @@ export const generateAppointmentMessages = (selectedServices) => {
       const toTime = service.dateAndTime.time.toTime;
 
       // Construct the message
-      const message = `Servcie: ${serviceName}, Technician Selected: ${technicianName},Date and Time: ${fromDate.toLocaleDateString()} ${fromTime} - ${toTime}`;
+      const message = `Servcie: ${serviceName}, Technician Selected: ${technicianName}, Date and Time: ${fromDate.toLocaleDateString()} ${fromTime} - ${toTime}`;
 
       // Push the message to the messages array
       messages.push(message);
@@ -273,23 +273,6 @@ export const generateAppointmentMessages = (selectedServices) => {
   }
 
   return messages;
-};
-
-export const generateAppointmentMessages2 = (selectedServices) => {
-  const messages = [];
-
-  // Iterate over each category (e.g., "Massage", "Facial")
-  for (const categoryKey in selectedServices) {
-    const category = selectedServices[categoryKey];
-    messages.push(category);
-  }
-
-  let resultString = messages.join(" ");
-
-  const generatedMessage = `Thank you for booking your ${resultString} service with Epicenter!. We
-  will confirm your appointment via email.`;
-
-  return generatedMessage;
 };
 
 const serviceTimings60 = [
@@ -319,4 +302,11 @@ export const formatDate = (date = new Date()) => {
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
+};
+
+const serviceKeyMapping = {
+  holisticWellnessMassage: "Holistic Wellness Massage",
+  facial: "Facial",
+  wax: "Wax",
+  medicalPedicure: "Medical Pedicure",
 };
