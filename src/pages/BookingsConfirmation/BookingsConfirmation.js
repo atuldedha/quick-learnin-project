@@ -13,10 +13,15 @@ const BookingsConfirmation = () => {
         {state}
         <br />
       </span>
-      <span className="bookingsConfirmation_bold_text">
-        Epicenter Wellness, Here to care for you
-        <br />
-        Thanks
+      <span className="bookingsConfirmation_text">
+        Epicenter Wellness,
+        <span
+          className="bookingsConfirmation_bold_text"
+          style={{ fontWeight: 700, color: "#000000" }}
+        >
+          {" "}
+          Here to care for you
+        </span>
       </span>
     </div>
   );

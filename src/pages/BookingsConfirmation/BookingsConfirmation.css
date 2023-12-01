@@ -2,18 +2,19 @@
   display: flex;
   flex-direction: column;
   padding: 20px 40px;
-  align-items: center;
+  align-items: flex-start;
 }
 
+.bookingsConfirmation_text,
 .bookingsConfirmation_bold_text,
 .bookingsConfirmation_success_text {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  text-align: center;
+  text-align: start;
   gap: 20px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--black);
   margin: 10px 0;
 }
@@ -26,6 +27,24 @@
 
 .bookingsConfirmation_bold_text {
   color: var(--black);
+  font-weight: 700;
   font-size: 20px;
   text-align: center;
+}
+
+.bookingsConfirmation_text {
+  margin-bottom: 0;
+  gap: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+@media screen and (min-width: 568px) {
+  .bookingsConfirmation_container {
+    align-items: center;
+  }
+  .bookingsConfirmation_text {
+    align-items: center;
+  }
 }

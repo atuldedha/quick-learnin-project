@@ -228,7 +228,7 @@ export const generateClientMessage2 = (selectedServices) => {
   }
 
   let resultString = messages.join(", ");
-  const generatedMessage = `Thank you for booking your ${resultString} service with Epicenter! We will confirm your appointment via mail.`;
+  const generatedMessage = `Thank you for booking your ${resultString.toLowerCase()} service with Epicenter! We will confirm your appointment via mail.`;
 
   return generatedMessage;
 };
