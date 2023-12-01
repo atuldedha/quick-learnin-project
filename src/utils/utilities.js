@@ -4,6 +4,7 @@ export const services = [
   {
     id: 1,
     name: "Holistic Wellness Massage",
+    keyName: "holisticWellnessMassage",
     image:
       "https://envieposqastorage.blob.core.windows.net/zotastatic/categorypics/MassageV2.png",
     servicesOffered: [
@@ -11,31 +12,37 @@ export const services = [
         name: "Swedish Massage",
         price: "130",
         time: "60 mins",
+        keyName: "swedish60",
       },
       {
         name: "Swedish Massage + Deep Tissue",
         price: "130",
         time: "60 mins",
+        keyName: "swedishAndDeepTissue60",
       },
       {
         name: "Deep Tissue",
         price: "150",
         time: "60 mins",
+        keyName: "deepTissue60",
       },
       {
         name: "Swedish Massage",
         price: "190",
         time: "90 mins",
+        keyName: "swedish90",
       },
       {
         name: "Swedish + Deep Tissue",
         price: "190",
         time: "90 mins",
+        keyName: "swedishAndDeepTissue90",
       },
       {
         name: "Deep Tissue Massage",
         price: "225",
         time: "90 mins",
+        keyName: "deepTissue90",
       },
     ],
   },
@@ -43,27 +50,32 @@ export const services = [
     id: 2,
     name: "Facial",
     image: FacialImage,
+    keyName: "facial",
     servicesOffered: [
       {
         name: "Custom Facial",
         price: "100",
         time: "60 mins",
+        keyName: "customFacial60",
       },
       {
         name: "Full Body Facial",
         price: "200",
         time: "90 mins",
+        keyName: "fullBodyFacial90",
       },
       {
         name: "Back Facial",
         price: "100",
         time: "60 mins",
+        keyName: "backFacial60",
       },
     ],
   },
   {
     id: 3,
     name: "Wax",
+    keyName: "wax",
     image:
       "https://envieposqastorage.blob.core.windows.net/zotastatic/categorypics/WaxingV2.png",
     servicesOffered: [],
@@ -71,6 +83,7 @@ export const services = [
   {
     id: 4,
     name: "Medical Pedicure",
+    keyName: "medicalPedicure",
     image:
       "https://envieposqastorage.blob.core.windows.net/zotastatic/categorypics/FullSetFillInV2.png",
     servicesOffered: [],
@@ -136,7 +149,7 @@ export const categorizeTimings = (selectedServiceTime, date, bookedDates) => {
         if (
           currentDateObj.getTime() === bookedDateObj.getTime() &&
           ((fromTimeMinutes >= bookedFromTimeMinutes &&
-            fromTimeMinutes < bookedToTimeMinutes) ||
+            fromTimeMinutes <= bookedToTimeMinutes) ||
             (toTimeMinutes > bookedFromTimeMinutes &&
               toTimeMinutes <= bookedToTimeMinutes) ||
             (fromTimeMinutes <= bookedFromTimeMinutes &&

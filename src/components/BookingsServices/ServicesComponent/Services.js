@@ -16,6 +16,7 @@ const Services = ({
   setServiceTime,
   setSelectedCardService,
   selectedServices,
+  setShowNoAppointmentPopup,
 }) => {
   const [searchValue, setSearchValue] = useState("");
 
@@ -29,8 +30,8 @@ const Services = ({
   useEffect(() => {
     // Filter out services that are already selected
     const filtered = availableSelectedServices?.filter((service) => {
-      const cardName = selectedCard?.name;
-      const serviceName = service.name;
+      const cardName = selectedCard?.keyName;
+      const serviceName = service.keyName;
 
       // Check if the service is selected for the card
       if (selectedServices?.[cardName]?.[serviceName]) {
@@ -79,9 +80,9 @@ const Services = ({
       const updatedServices = { ...prevSelectedServices };
 
       // Check if the selected card exists
-      if (updatedServices[selectedCard.name]) {
+      if (updatedServices[selectedCard.keyName]) {
         // Delete
-        delete updatedServices[selectedCard.name];
+        delete updatedServices[selectedCard.keyName];
       }
 
       return updatedServices;
@@ -95,19 +96,24 @@ const Services = ({
   };
 
   const handleServiceClick = (selectedService) => {
-    setServiceTime(selectedService?.time);
-    setSelectedCardService(selectedService);
-    setSelectedServices((prevSelectedServices) => {
-      return {
-        ...prevSelectedServices,
-        [selectedCard?.name]: {
-          ...prevSelectedServices[selectedCard?.name],
-          [selectedService?.name]: {
-            selectedService,
+    if (selectedCard?.keyName === "facial") {
+      setShowNoAppointmentPopup(true);
+    } else {
+      setServiceTime(selectedService?.time);
+      setSelectedCardService(selectedService);
+      setSelectedServices((prevSelectedServices) => {
+        return {
+          ...prevSelectedServices,
+          [selectedCard?.keyName]: {
+            ...prevSelectedServices[selectedCard?.keyName],
+            [selectedService?.keyName]: {
+              selectedService,
+            },
           },
-        },
-      };
-    });
+        };
+      });
+      setSelectedTab(2);
+    }
   };
 
   return !showServicesWithPrice ? (
@@ -142,7 +148,6 @@ const Services = ({
       <ServicesSelection
         handleServiceClick={handleServiceClick}
         servicesOffered={filteredServices}
-        setSelectedTab={setSelectedTab}
       />
     </div>
   );

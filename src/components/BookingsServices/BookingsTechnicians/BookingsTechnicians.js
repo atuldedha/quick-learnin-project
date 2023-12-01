@@ -25,9 +25,11 @@ const BookingsTechnicians = ({
       const updatedServices = { ...prevSelectedServices };
 
       // Check if the selected card exists
-      if (updatedServices[selectedCard.name]) {
+      if (updatedServices[selectedCard.keyName]) {
         // Delete the selected service from the selected card
-        delete updatedServices[selectedCard.name][selectedCardService.name];
+        delete updatedServices[selectedCard.keyName][
+          selectedCardService.keyName
+        ];
       }
 
       return updatedServices;

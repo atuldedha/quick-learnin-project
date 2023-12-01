@@ -8,7 +8,7 @@ const BookingsInformation = ({
   openNoteModal,
 }) => {
   return Object.keys(selectedServices)?.map((key) =>
-    Object.keys(selectedServices[key])?.map((data) => (
+    Object.keys(selectedServices[key])?.map((data, index) => (
       <div className="bookingsSubmit_appointment_container" key={data}>
         <div>
           <h4 className="bookingsSubmit_heading">
@@ -64,7 +64,7 @@ const BookingsInformation = ({
 
         <TrashIcon
           className="bookingsSubmit_deleteIcon"
-          onClick={() => handleDelete(key, data)}
+          onClick={() => handleDelete(key, data, index)}
         />
       </div>
     ))

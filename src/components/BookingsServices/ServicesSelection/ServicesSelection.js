@@ -1,16 +1,7 @@
 import React from "react";
 import "./ServicesSelection.css";
 
-const ServicesSelection = ({
-  servicesOffered,
-  handleServiceClick,
-  setSelectedTab,
-}) => {
-  const handleClick = (data) => {
-    handleServiceClick(data);
-    setSelectedTab(2);
-  };
-
+const ServicesSelection = ({ servicesOffered, handleServiceClick }) => {
   return servicesOffered?.length === 0 ? (
     <span className="servicesSelection__no_service_text">
       No Services found for this type
@@ -21,7 +12,7 @@ const ServicesSelection = ({
         <div
           key={index}
           className="servicesSelection_text_container"
-          onClick={() => handleClick(data)}
+          onClick={() => handleServiceClick(data)}
         >
           <span className="servicesSelection__text_name">{data.name}</span>
           <span className="servicesSelection_text_price">{`$${data.price} (${data.time})`}</span>
@@ -35,7 +26,7 @@ const ServicesSelection = ({
           <div
             key={index}
             className="servicesSelection_text_container"
-            onClick={() => handleClick(data)}
+            onClick={() => handleServiceClick(data)}
           >
             <span className="servicesSelection__text_name">{data.name}</span>
             <span className="servicesSelection_text_price">{`$${data.price} (${data.time})`}</span>
@@ -49,7 +40,7 @@ const ServicesSelection = ({
             <div
               key={index}
               className="servicesSelection_text_container"
-              onClick={() => handleClick(data)}
+              onClick={() => handleServiceClick(data)}
             >
               <span className="servicesSelection__text_name">{data.name}</span>
               <span className="servicesSelection_text_price">{`$${data.price} (${data.time})`}</span>

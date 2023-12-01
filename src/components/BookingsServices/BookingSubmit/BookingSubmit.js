@@ -20,6 +20,7 @@ const BookingSubmit = ({
   setShowServicesWithPrice,
   setSelectedServices,
   bookedTimings,
+  setBookedTimings,
   resetData,
 }) => {
   const navigate = useNavigate();
@@ -75,14 +76,32 @@ const BookingSubmit = ({
     setOpenModal(false);
   };
 
-  const handleServiceDelete = (parentKey, keyToDelete) => {
+  const handleServiceDelete = (parentKey, keyToDelete, index) => {
     const updatedSelectedServices = { ...selectedServices };
 
+    let technicianId;
     // Check if the parent key exists in the object
     if (updatedSelectedServices[parentKey]) {
       // Delete the specified key from the parent object
+      technicianId =
+        updatedSelectedServices[parentKey][keyToDelete]?.technicianSelected
+          ?._id;
       delete updatedSelectedServices[parentKey][keyToDelete];
     }
+
+    // delete the stored time as well
+    setBookedTimings((prevBookedTimings) => {
+      if (prevBookedTimings[technicianId]) {
+        if (
+          index >= 0 &&
+          index < prevBookedTimings[technicianId].bookedTimings.length
+        ) {
+          prevBookedTimings[technicianId].bookedTimings.splice(index, 1);
+        }
+      }
+
+      return { ...prevBookedTimings };
+    });
 
     // Update the state with the modified object
     setSelectedServices(updatedSelectedServices);

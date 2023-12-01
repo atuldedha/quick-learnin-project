@@ -9,6 +9,7 @@ import axios from "axios";
 import { getURLs } from "../../utils/urlConfig";
 import BookingsHeader from "../../components/BookingsServices/BookingsHeader/BookingsHeader";
 import { formatDate } from "../../utils/utilities";
+import AutoCloseModal from "../../components/AutoCloseModal/AutoCloseModal";
 
 const Bookings = () => {
   const [selectedTab, setSelectedTab] = useState(1);
@@ -19,12 +20,14 @@ const Bookings = () => {
   const [selectedServices, setSelectedServices] = useState({});
   const [selectedTechnician, setSelectedTechnician] = useState({});
   const [selectedTiming, setSelectedTiming] = useState();
-  const [allSelectedServices, setAllSelectedServices] = useState([]);
 
   // all technicians state
   const [allTechnicians, setAllTechnicians] = useState([]);
   const [bookedTimings, setBookedTimings] = useState([]);
   const [serviceTime, setServiceTime] = useState("");
+
+  // show popup state
+  const [showNoAppointmentPopup, setShowNoAppointmentPopup] = useState(false);
 
   const resetData = () => {
     setSelectedServices({});
@@ -32,7 +35,6 @@ const Bookings = () => {
     setSelectedCardService({});
     setSelectedTechnician({});
     setSelectedTiming("");
-    setAllSelectedServices([]);
   };
 
   const addTechnicianToService = (technician) => {
@@ -58,15 +60,19 @@ const Bookings = () => {
     setSelectedServices((prevSelectedServices) => {
       const updatedServices = { ...prevSelectedServices };
 
-      for (const serviceName in updatedServices) {
-        if (updatedServices.hasOwnProperty(serviceName)) {
-          for (const key in updatedServices[serviceName]) {
-            if (updatedServices[serviceName].hasOwnProperty(key)) {
-              updatedServices[serviceName][key].technicianSelected = {
-                ...technician,
-              };
-            }
-          }
+      // Check if selectedCard.keyName exists
+      if (selectedCard?.keyName && updatedServices[selectedCard.keyName]) {
+        // Check if selectedService.keyName exists
+        if (
+          selectedCardService?.keyName &&
+          updatedServices[selectedCard.keyName][selectedCardService.keyName]
+        ) {
+          // Update technicianSelected for the specific service
+          updatedServices[selectedCard.keyName][
+            selectedCardService.keyName
+          ].technicianSelected = {
+            ...technician,
+          };
         }
       }
 
@@ -102,38 +108,14 @@ const Bookings = () => {
     });
     const updatedServices = { ...selectedServices };
 
-    updatedServices[selectedCard?.name][selectedCardService?.name].dateAndTime =
-      {
-        time: timing,
-        date,
-      };
+    updatedServices[selectedCard?.keyName][
+      selectedCardService?.keyName
+    ].dateAndTime = {
+      time: timing,
+      date,
+    };
 
-    for (const serviceName in updatedServices) {
-      if (updatedServices.hasOwnProperty(serviceName)) {
-        for (const key in updatedServices[serviceName]) {
-          if (updatedServices[serviceName].hasOwnProperty(key)) {
-            if (
-              allSelectedServices[serviceName] &&
-              allSelectedServices[serviceName][key]
-            ) {
-              // If the key already exists in allSelectedServices, add the content
-              allSelectedServices[serviceName][key] = {
-                ...allSelectedServices[serviceName][key],
-                ...updatedServices[serviceName][key],
-              };
-            } else {
-              // If the key doesn't exist, simply assign the content
-              allSelectedServices[serviceName] = {
-                ...allSelectedServices[serviceName],
-                [key]: updatedServices[serviceName][key],
-              };
-            }
-          }
-        }
-      }
-    }
-
-    setAllSelectedServices({ ...allSelectedServices });
+    setSelectedServices(updatedServices);
   };
 
   useEffect(() => {
@@ -175,6 +157,7 @@ const Bookings = () => {
             showServicesWithPrice={showServicesWithPrice}
             setServiceTime={setServiceTime}
             setSelectedCardService={setSelectedCardService}
+            setShowNoAppointmentPopup={setShowNoAppointmentPopup}
           />
         )}
         {selectedTab === 2 && (
@@ -212,10 +195,17 @@ const Bookings = () => {
             setShowServicesWithPrice={setShowServicesWithPrice}
             setSelectedServices={setSelectedServices}
             bookedTimings={bookedTimings}
+            setBookedTimings={setBookedTimings}
             resetData={resetData}
           />
         )}
       </div>
+
+      <AutoCloseModal
+        openState={showNoAppointmentPopup}
+        setOpenState={setShowNoAppointmentPopup}
+        message={"We are not taking appoints for Facials right now"}
+      />
     </div>
   );
 };
