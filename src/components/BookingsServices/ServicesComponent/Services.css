@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
-  margin: 20px;
+  margin: 10px 15px;
   height: 100%;
   width: 100%;
 }
@@ -15,4 +15,11 @@
   color: var(--blue1);
   text-align: center;
   width: 100%;
+}
+
+@media screen and (min-width: 568px) {
+  .bookingsServices_container {
+    gap: 10px;
+    margin: 20px;
+  }
 }

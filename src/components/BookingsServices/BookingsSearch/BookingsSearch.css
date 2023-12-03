@@ -3,16 +3,16 @@
   align-items: center;
   gap: 10px;
   background-color: var(--gray2);
-  padding: 5px 10px;
-  width: 250px;
+  padding: 5px 8px;
+  width: 200px;
   margin-left: 20px;
   border-radius: 8px;
 }
 
 .booksSearch_input_box {
   background-color: var(--gray3);
-  padding: 10px;
-  font-size: 14px;
+  padding: 8px;
+  font-size: 12px;
   font-weight: 400;
   color: #000000;
   width: 100%;
@@ -25,4 +25,20 @@
   height: 20px;
   width: 20px;
   color: black;
+}
+
+@media screen and (min-width: 568px) {
+  .bookingsSearch_container {
+    padding: 5px 10px;
+    width: 250px;
+  }
+
+  .booksSearch_input_box {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .booksSearch_input_box::placeholder {
+    font-size: 14px;
+  }
 }
