@@ -128,13 +128,14 @@ export const categorizeTimings = (selectedServiceTime, date, bookedDates) => {
       for (const bookedDate of bookedDates) {
         const bookedFromTime = new Date(bookedDate.fromTime).toLocaleTimeString(
           [],
-          { hour: "2-digit", minute: "2-digit" }
+          { hour: "2-digit", minute: "2-digit", hour12: false }
         );
         const bookedToTime = new Date(bookedDate.toTime).toLocaleTimeString(
           [],
           {
             hour: "2-digit",
             minute: "2-digit",
+            hour12: false,
           }
         );
 
