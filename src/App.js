@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import ServiceProvider from "./pages/ServiceProvider";
@@ -12,6 +12,8 @@ function App() {
       <Route path="/service_provider" element={<ServiceProvider />} />
       <Route path="/appointment-booking" element={<Bookings />} />
       <Route path="/booking-confirmation" element={<BookingsConfirmation />} />
+      {/* Catch-all route for non-existing paths */}
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 }
