@@ -6,6 +6,25 @@
   margin: 10px 15px;
 }
 
+.bookingsTechnicians_disclaimer_text {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 23px;
+  color: var(--black1);
+  font-family: "Manrope", sans-serif;
+  white-space: nowrap;
+  display: block;
+  margin-top: 18px;
+}
+
+.bookingsTechnicians_disclaimer_point {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 23px;
+  color: var(--black1);
+  font-family: "Manrope", sans-serif;
+}
+
 @media screen and (min-width: 568px) {
   .bookingsTechnicians_container {
     gap: 10px;

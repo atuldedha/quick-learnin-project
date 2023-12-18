@@ -56,6 +56,18 @@ const BookingsTechnicians = ({
           />
         ))}
       </div>
+      <div>
+        <ul className="bookingsTechnicians_disclaimer_text">
+          Disclaimer:
+          <li className="bookingsTechnicians_disclaimer_point">
+            If you prefer a female therapist, Please call or text on +1
+            410-914-7131.
+          </li>
+          <li className="bookingsTechnicians_disclaimer_point">
+            30$ Discount will be given to first time customer on a session.
+          </li>
+        </ul>
+      </div>
     </>
   );
 };
