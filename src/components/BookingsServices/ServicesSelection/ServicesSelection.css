@@ -90,6 +90,7 @@
   color: var(--black1);
   font-family: "Manrope", sans-serif;
   margin: 0;
+  white-space: normal;
 }
 
 @media screen and (min-width: 568px) {
