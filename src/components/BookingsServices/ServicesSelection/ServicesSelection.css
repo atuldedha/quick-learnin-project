@@ -71,6 +71,27 @@
   color: var(--black);
 }
 
+.servicesSelection_disclaimer_container {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 23px;
+  color: var(--black1);
+  font-family: "Manrope", sans-serif;
+  white-space: nowrap;
+  display: block;
+  margin: 14px 0;
+  padding: 0 20px;
+}
+
+.servicesSelection_disclaimer_text {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 23px;
+  color: var(--black1);
+  font-family: "Manrope", sans-serif;
+  margin: 0;
+}
+
 @media screen and (min-width: 568px) {
   .servicesSelection__text_name {
     font-size: 16px;

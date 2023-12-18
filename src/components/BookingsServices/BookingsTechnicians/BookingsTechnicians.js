@@ -56,15 +56,12 @@ const BookingsTechnicians = ({
           />
         ))}
       </div>
-      <div>
-        <ul className="bookingsTechnicians_disclaimer_text">
-          Disclaimer:
-          <li className="bookingsTechnicians_disclaimer_point">
-            If you prefer a female therapist, please call or text on +1
+      <div className="bookingsTechnicians_disclaimer_text">
+        Disclaimer:
+        <ul className="bookingsTechnicians_disclaimer_point">
+          <li className="">
+            If you prefer a female therapist, please call or text +1
             410-914-7131.
-          </li>
-          <li className="bookingsTechnicians_disclaimer_point">
-            A 30$ Discount is available for new customers
           </li>
         </ul>
       </div>
