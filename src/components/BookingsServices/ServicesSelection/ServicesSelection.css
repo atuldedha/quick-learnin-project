@@ -72,7 +72,7 @@
 }
 
 .servicesSelection_disclaimer_container {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 23px;
   color: var(--black1);
@@ -84,8 +84,8 @@
 }
 
 .servicesSelection_disclaimer_text {
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
   line-height: 23px;
   color: var(--black1);
   font-family: "Manrope", sans-serif;
