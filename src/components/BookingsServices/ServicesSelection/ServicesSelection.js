@@ -20,12 +20,12 @@ const ServicesSelection = ({ servicesOffered, handleServiceClick }) => {
           </div>
         ))}
       </div>
-      <div className="servicesSelection_disclaimer_container">
+      {/* <div className="servicesSelection_disclaimer_container">
         <span>Disclaimer: </span>
         <ul className="servicesSelection_disclaimer_text">
           <li>A $30 Discount is available for new customers</li>
         </ul>
-      </div>
+      </div> */}
     </>
   ) : (
     <>
@@ -59,7 +59,7 @@ const ServicesSelection = ({ servicesOffered, handleServiceClick }) => {
             ))}
         </div>
       </div>
-      <div>
+      {/* <div>
         <span className="servicesSelection_disclaimer_container">
           Disclaimer:{" "}
         </span>
@@ -68,7 +68,7 @@ const ServicesSelection = ({ servicesOffered, handleServiceClick }) => {
             A $30 Discount is available for new customers
           </li>
         </ul>
-      </div>
+      </div> */}
     </>
   );
 };
