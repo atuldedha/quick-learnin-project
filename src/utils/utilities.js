@@ -44,6 +44,12 @@ export const services = [
         time: "90 mins",
         keyName: "deepTissue90",
       },
+      {
+        name: "Sports Massage",
+        price: "226",
+        time: "90 mins",
+        keyName: "sportsMassage90",
+      },
     ],
   },
   {
